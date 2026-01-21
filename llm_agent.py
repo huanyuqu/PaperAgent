@@ -11,8 +11,8 @@ class LLMAgent:
             api_key=os.getenv('OPENROUTER_API_KEY') or os.getenv('OPENAI_API_KEY'),
             base_url=os.getenv('OPENROUTER_BASE_URL') or os.getenv('OPENAI_BASE_URL', 'https://openrouter.ai/api/v1'),
             default_headers={
-                "HTTP-Referer": os.getenv('LLM_REFERER', 'https://github.com/your-username/your-repo'),
-                "X-Title": os.getenv('LLM_TITLE', 'Arxiv Paper Agent'),
+                "HTTP-Referer": os.getenv('LLM_REFERER') or 'https://github.com/your-username/your-repo',
+                "X-Title": os.getenv('LLM_TITLE') or 'Arxiv Paper Agent',
             }
         )
         self.model = os.getenv('LLM_MODEL', 'anthropic/claude-3.5-sonnet')
