@@ -1,0 +1,7 @@
+pyzotero
+arxiv
+openai
+python-dotenv
+requests
+pypdf
+markdown

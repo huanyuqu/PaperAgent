@@ -1,0 +1,10 @@
+.env
+debug/
+reports/
+agent_state.json
+zotero_interests.json
+__pycache__/
+*.pdf
+.vscode/
+venv/
+.DS_Store
