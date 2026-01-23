@@ -134,11 +134,15 @@ class LLMAgent:
 
 请严格按以下 JSON 格式输出分析结果。不要包含任何额外的解释文字，确保所有的反斜杠都已经正确转义（特别是数学公式或特殊符号），并且不要在最后一个字段后加逗号。
 
+请严格按以下 JSON 格式输出分析结果。不要包含任何额外的解释文字，确保所有的反斜杠都已经正确转义（特别是数学公式或特殊符号），并且不要在最后一个字段后加逗号。
+
 {{
     "summary_cn": "基于提供的{text_type}，给出一个准确、深刻的中文总结（300字以内）",
     "summary_en": "An accurate and profound English summary based on the provided {text_type} (within 150 words)",
     "analysis_source": "{text_type}",
+    "analysis_source": "{text_type}",
     "quality_evaluation": "对论文 quality 的深度评价",
+    "top_conference_probability": 85,
     "top_conference_probability": 85,
     "author_expert_evaluation": "评估作者是否为该领域的知名专家，以及文章是否来自于顶级名校或顶尖研究机构（如 Google, OpenAI, Stanford 等）",
     "relevance_score": 10,
@@ -150,7 +154,7 @@ class LLMAgent:
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
-                    {"role": "system", "content": "你是一个学术辅助助手，擅长分析 Arxiv 论文。你必须仅输出有效的 JSON。"},
+                    {"role": "system", "content": "你是一个学术辅助助手，擅长分析 Arxiv 论文。你必须仅输出有效的 JSON。你必须仅输出有效的 JSON。"},
                     {"role": "user", "content": prompt}
                 ],
                 response_format={"type": "json_object"}
