@@ -158,6 +158,11 @@ class LLMAgent:
             content = response.choices[0].message.content
             result = self._parse_json(content)
             if result:
+                # 确保关键字段存在
+                required_fields = ['recommendation_reason', 'quality_evaluation', 'relevance_score']
+                for field in required_fields:
+                    if field not in result:
+                        result[field] = '无' if field != 'relevance_score' else 0
                 return result
             else:
                 print(f"Failed to parse LLM JSON response: {content[:200]}...")
